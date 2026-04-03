@@ -11,6 +11,7 @@
     --amicial-orange: #f29559;
     --amicial-blue-light: #f4f7f9;
     --amicial-orange-light: #fff8f4;
+    --red-alert: #e74c3c;
     --text: #2c3e50;
     --text-sec: #5d6d7e;
     --border: rgba(62, 90, 127, 0.15);
@@ -21,15 +22,13 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',sans-serif;background:#fafafa;color:var(--text);font-size:15px;line-height:1.6;}
 
-  /* HEADER & LOGO */
-  .header{background: #fff; padding: 1rem 2rem; border-bottom: 3px solid var(--amicial-orange); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow); position: sticky; top:0; z-index:100;}
-  .logo-wrap img { height: 38px; width: auto; } /* Taille logo ajustée */
-  .header-title { text-align: right; }
-  .header-title h1 { font-family: 'DM Serif Display', serif; color: var(--amicial-blue); font-size: 1.2rem; font-weight: 400; }
-  .header-title p { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--amicial-orange); font-weight: 600; }
+  /* HEADER */
+  .header{background: #fff; padding: 0.8rem 2rem; border-bottom: 3px solid var(--amicial-orange); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow); position: sticky; top:0; z-index:100;}
+  .logo-wrap img { height: 35px; width: auto; }
+  .header-title h1 { font-family: 'DM Serif Display', serif; color: var(--amicial-blue); font-size: 1.1rem; }
 
   /* LAYOUT */
-  .layout{display:grid;grid-template-columns:240px 1fr;max-width:1150px;margin:1.5rem auto;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow: 0 10px 30px rgba(0,0,0,0.08);min-height: 85vh;}
+  .layout{display:grid;grid-template-columns:240px 1fr;max-width:1200px;margin:1rem auto;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow: 0 10px 30px rgba(0,0,0,0.08);min-height: 85vh;}
 
   /* NAVIGATION */
   nav{background:var(--amicial-blue);padding:1.5rem 1rem;color:#fff;}
@@ -38,198 +37,188 @@
   .nav-item:hover{background:rgba(255,255,255,0.1);color:#fff;}
   .nav-item.active{background:var(--amicial-orange);color:#fff;font-weight:600;}
 
-  /* CONTENT AREA */
-  .content{padding:2rem 2.5rem; overflow-y:auto;}
+  /* CONTENT */
+  .content{padding:2rem; overflow-y:auto;}
   .panel{display:none;animation:fadeIn .3s ease;}
   .panel.active{display:block;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-  .panel-title{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--amicial-blue);margin-bottom:0.3rem;}
-  .panel-sub{font-size:14px;color:var(--text-sec);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+  .panel-title{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--amicial-blue);margin-bottom:1rem;border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;}
 
   /* CARDS */
-  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.2rem;}
-  .card-h3 { font-size: 15px; color: var(--amicial-blue); margin-bottom: 12px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-  .badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:10px;background:var(--amicial-blue-light);color:var(--amicial-blue);text-transform:uppercase;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:1rem;}
+  .card-h3 { font-size: 14px; color: var(--amicial-blue); margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-left: 3px solid var(--amicial-orange); padding-left: 10px;}
   
-  /* SCRIPTS */
-  .script-block{background:var(--amicial-blue-light);border-left:4px solid var(--amicial-blue);padding:12px 15px;margin-bottom:12px;font-style: italic;font-size:14px;color:var(--amicial-blue);border-radius: 0 8px 8px 0;}
+  /* SCRIPTS & TIPS */
+  .script-block{background:var(--amicial-blue-light);border-left:4px solid var(--amicial-blue);padding:12px;margin:10px 0;font-style: italic;font-size:14px;color:var(--amicial-blue);border-radius: 0 8px 8px 0;}
   .script-label{font-size:10px;font-weight:700;text-transform:uppercase;margin-bottom:4px;font-style: normal;display:block;color:var(--amicial-orange);}
+  .tip{background:var(--amicial-orange-light);border:1px solid var(--amicial-orange);padding:10px;border-radius:8px;font-size:12px;margin:8px 0;color:var(--amicial-blue);line-height:1.4;}
 
-  /* DIAGNOSTIC EXHAUSTIF */
-  .diag-section { margin-bottom: 20px; }
-  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
-  .diag-box { background: #fdfdfd; border: 1px solid #eee; padding: 12px; border-radius: 8px; }
-  .diag-q { font-weight: 600; font-size: 13px; color: var(--amicial-blue); margin-bottom: 5px; display: block; }
-  .diag-list { list-style: none; font-size: 12px; color: var(--text-sec); }
-  .diag-list li { margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-  .diag-list li::before { content: "•"; color: var(--amicial-orange); }
+  /* DIAGNOSTIC GRID */
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+  .diag-q-group { margin-bottom: 15px; }
+  .diag-label { font-weight: 600; font-size: 13px; color: var(--text); display: block; margin-bottom: 5px; }
+  
+  /* SECTOR CARDS */
+  .sector-card{border:2px solid var(--amicial-blue); border-radius:var(--radius); padding:1.2rem; margin-top:1rem; background: #fff;}
+  .sector-card.inactive { border-color: var(--red-alert); background: #fff5f4; }
+  .status-tag { padding: 4px 10px; border-radius: 100px; font-size: 10px; font-weight: 800; color: #fff; }
 
-  /* SECTOR RESULT CARD (ALIGNÉ SUR POWER AUTOMATE) */
-  .sector-card{background:linear-gradient(135deg, #fff 0%, var(--amicial-blue-light) 100%);border:2px solid var(--amicial-blue);border-radius:var(--radius);padding:1.5rem;margin-top:1rem;}
-  .sector-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:10px;}
-  .sector-title{font-size:17px;font-weight:700;color:var(--amicial-blue);}
-  .sector-detail{display:grid;grid-template-columns: 1fr 1fr; gap:15px; font-size:13px;}
-  .detail-label{font-weight:600;color:var(--text-sec);display:block;font-size:10px;text-transform:uppercase; margin-bottom: 2px;}
-  .detail-val{color:var(--text);font-weight:500; display: block; background: #fff; padding: 5px 8px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.05);}
+  /* PIECES CLOTURE */
+  .pieces-container { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .piece-cat { background: #f9f9f9; border-radius: 8px; padding: 12px; border: 1px solid #eee; }
+  .piece-cat-title { font-size: 11px; font-weight: 800; color: var(--amicial-blue); text-transform: uppercase; margin-bottom: 8px; display: block; border-bottom: 1px solid #ddd; padding-bottom: 4px;}
+  .piece-list { list-style: none; font-size: 12px; }
+  .piece-list li { margin-bottom: 4px; display: flex; align-items: flex-start; gap: 8px; }
+  .piece-list li::before { content: "☐"; color: var(--amicial-orange); font-weight: bold; }
 
-  /* TIPS */
-  .tip{background:var(--amicial-orange-light);border:1px solid var(--amicial-orange);padding:10px;border-radius:8px;font-size:12px;margin-top:10px;color:var(--amicial-blue);}
-
-  /* UI ELEMENTS */
-  .cp-input{width:100%;padding:12px;border:2px solid var(--border);border-radius:8px;font-size:16px;outline:none;}
-  .cp-input:focus{border-color:var(--amicial-orange);}
-  .objection-btn{width:100%;text-align:left;padding:12px;background:#fff;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;cursor:pointer;font-weight:600;display:flex;justify-content:space-between;font-size:14px;color:var(--amicial-blue);}
-  .objection-content{display:none;padding:15px;background:var(--amicial-blue-light);margin-top:-6px;margin-bottom:10px;border-radius:0 0 8px 8px;font-size:14px;}
+  .ui-input{width:100%;padding:10px;border:2px solid var(--border);border-radius:8px;font-size:15px;outline:none;}
+  .ui-input:focus{border-color:var(--amicial-orange);}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo-wrap">
-    <img src="https://amicial.fr/uploads/company/logo_f193670e633a220d12e109007ca43583.svg" alt="Amicial Logo">
-  </div>
-  <div class="header-title">
-    <h1>Kit Accueil Prospect</h1>
-    <p>Expertise Aide & Soins</p>
-  </div>
+  <div class="logo-wrap"><img src="https://amicial.fr/uploads/company/logo_f193670e633a220d12e109007ca43583.svg"></div>
+  <div class="header-title"><h1>Assistant Accueil Amicial</h1></div>
 </div>
 
 <div class="layout">
   <nav>
-    <div class="nav-label">Relation Client</div>
-    <button class="nav-item active" onclick="show('accueil')">1. Accueil & Posture</button>
+    <div class="nav-label">Parcours Appel</div>
+    <button class="nav-item active" onclick="show('accueil')">1. Ouverture</button>
     <button class="nav-item" onclick="show('diagnostic')">2. Diagnostic Expert</button>
-    <button class="nav-item" onclick="show('solution')">3. Notre Solution</button>
-    <button class="nav-item" onclick="show('cloture')">4. Conclusion & Pièces</button>
-    
-    <div class="nav-label">Outils Métier</div>
-    <button class="nav-item" onclick="show('secteurs')">📍 Secteurs / Agences</button>
+    <button class="nav-item" onclick="show('solution')">3. L'Offre Amicial</button>
+    <button class="nav-item" onclick="show('cloture')">4. Clôture & Pièces</button>
+    <div class="nav-label">Outils</div>
+    <button class="nav-item" onclick="show('secteurs')">📍 Vérifier Secteur</button>
     <button class="nav-item" onclick="show('objections')">💬 Objections</button>
   </nav>
 
   <div class="content">
 
     <div id="panel-accueil" class="panel active">
-      <div class="panel-title">Posture & Écoute</div>
-      <div class="panel-sub">L'appelant doit se sentir immédiatement pris en charge.</div>
+      <div class="panel-title">Posture & Ouverture</div>
       <div class="card">
-        <span class="badge">Le Décroché Amicial</span>
         <div class="script-block">
-          "Bonjour et bienvenue chez Amicial, je suis [Prénom]. Je vous écoute, comment puis-je vous accompagner aujourd'hui ?"
+          <span class="script-label">Accroche préconisée</span>
+          "Bonjour, bienvenue chez Amicial. Je suis [Prénom], je vous écoute : quel est l'objet de votre appel ?"
         </div>
         <div class="tip">
-          <strong>💡 Posture :</strong> Si l'appelant est un aidant fatigué, validez son émotion : <i>"Je comprends que la situation soit lourde, nous sommes là pour vous aider à y voir plus clair."</i>
+          <strong>💡 Le conseil de l'expert :</strong> Si la personne appelle pour un proche, demandez immédiatement : <i>"Et vous, comment allez-vous ? C'est une organisation importante pour vous aussi."</i>
         </div>
       </div>
     </div>
 
     <div id="panel-diagnostic" class="panel">
-      <div class="panel-title">Diagnostic Expert</div>
-      <div class="panel-sub">Cœur de l'appel : Remplir la fiche prospect avec précision.</div>
+      <div class="panel-title">Diagnostic Précis</div>
       
-      <div class="card">
-        <div class="card-h3">1. Situation du bénéficiaire</div>
-        <div class="script-block">
-          "Pour vous orienter vers la bonne coordinatrice, j'ai besoin de quelques précisions sur la personne à accompagner..."
-        </div>
-        <div class="diag-grid">
-          <div class="diag-box">
-            <span class="diag-q">Profil & Mobilité</span>
-            <ul class="diag-list">
-              <li>Âge et lieu de vie (Maison/Appart)</li>
-              <li>Marche seule, canne, ou fauteuil ?</li>
-              <li>Risque de chute avéré ?</li>
-            </ul>
-          </div>
-          <div class="diag-box">
-            <span class="diag-q">État Cognitif</span>
-            <ul class="diag-list">
-              <li>Pleine lucidité ?</li>
-              <li>Troubles mémoire / Alzheimer ?</li>
-              <li>Risque de désorientation ?</li>
-            </ul>
+      <div class="diag-grid">
+        <div class="diag-section">
+          <div class="card">
+            <div class="card-h3">Identité & Lieu</div>
+            <div class="diag-q-group">
+              <span class="diag-label">Quel est l'âge du bénéficiaire ?</span>
+              <div class="tip">
+                <strong>💡 Aide à l'analyse :</strong>
+                • <b>+85 ans :</b> Vigilance chutes et dénutrition.<br>
+                • <b>Sortie d'Hôpital :</b> Urgence absolue (Coordination requise).
+              </div>
+            </div>
+            <div class="diag-q-group">
+              <span class="diag-label">Quel est son Code Postal ?</span>
+              <div class="tip">
+                <strong>📍 Action :</strong> Utilisez l'outil <b>Secteurs</b> pour confirmer si l'agence est active.
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-h3">2. Besoins & Services actuels</div>
-        <div class="diag-grid">
-          <div class="diag-box">
-            <span class="diag-q">Actes de la vie quotidienne</span>
-            <ul class="diag-list">
-              <li>Aide à la toilette / Habillage ?</li>
-              <li>Préparation / Prise de repas ?</li>
-              <li>Aide au lever / au coucher ?</li>
-            </ul>
+        <div class="diag-section">
+          <div class="card">
+            <div class="card-h3">Besoins & Services</div>
+            <div class="script-block">
+              "Avez-vous besoin d'aide pour le quotidien (ménage, repas) ou de soins infirmiers à domicile ?"
+            </div>
+            <div class="diag-q-group">
+              <span class="diag-label">L'aidant a-t-il besoin de souffle ?</span>
+              <div class="tip">
+                <strong>✨ Option Amirelais :</strong> Si l'aidant semble épuisé, mentionnez nos solutions de répit pour lui permettre de s'absenter en toute sécurité.
+              </div>
+            </div>
+            <div class="diag-q-group">
+              <span class="diag-label">Services déjà en place ?</span>
+              <p style="font-size:12px; color:var(--text-sec)">Notez les intervenants (Infirmiers libéraux, Kiné...) pour la coordination.</p>
+            </div>
           </div>
-          <div class="diag-box">
-            <span class="diag-q">Intervenants déjà en place</span>
-            <ul class="diag-list">
-              <li>Infirmier (SIAD / Libéral) ?</li>
-              <li>Kiné ou Portage de repas ?</li>
-              <li>Autre association (remplacement) ?</li>
-            </ul>
-          </div>
-        </div>
-        <div class="tip">
-          <strong>⚠️ Point d'attention :</strong> Demandez les jours et créneaux souhaités. Notez si c'est une <strong>Sortie d'Hôpital</strong> (Urgence Prioritaire).
         </div>
       </div>
     </div>
 
     <div id="panel-solution" class="panel">
-      <div class="panel-title">La Solution Amicial</div>
-      <div class="panel-sub">Valoriser notre différence associative.</div>
+      <div class="panel-title">Notre Solution Globale</div>
       <div class="card">
-        <span class="badge">Argumentaire</span>
         <div class="script-block">
-          "Chez Amicial, nous sommes une association. Notre priorité est la continuité de service : nous veillons à ce que ce soit toujours le ou la même intervenant(e) qui vienne chez vous."
+          <span class="script-label">Argumentaire "Mix Aide & Soins"</span>
+          "La force d'Amicial, c'est de vous proposer un parcours complet. Nous pouvons coordonner à la fois l'aide à domicile et les soins infirmiers. C'est un interlocuteur unique pour vous."
         </div>
+        <div class="tip">
+          <strong>🚀 Cross-selling bienveillant :</strong> Si l'appel est pour du ménage, demandez : <i>"Est-ce que la préparation des repas ou une aide à la toilette sécuriserait davantage le quotidien ?"</i>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h3">Aides & Financements</div>
         <div class="script-block">
-          <span class="script-label">Avantage financier</span>
-          "Avec l'Avantage Fiscal Immédiat, vous ne payez que 50% de la facture. Si l'heure est à 26€, il ne reste que 13€ à votre charge réelle."
+          "Ne vous inquiétez pas pour l'aspect administratif. Nous vous accompagnons pour solliciter les aides (APA, PCH, Mutuelles). Avec le crédit d'impôt immédiat, votre reste à charge sera très réduit."
         </div>
       </div>
     </div>
 
     <div id="panel-cloture" class="panel">
-      <div class="panel-title">Conclusion & Engagement</div>
-      <div class="panel-sub">Sécuriser la suite du parcours.</div>
+      <div class="panel-title">Clôture & Rappel coordinatrice</div>
       <div class="card">
-        <span class="badge">Engagement de rappel</span>
         <div class="script-block">
-          "Je transmets votre fiche à la coordinatrice de votre secteur. Elle vous rappelle sous 2 heures pour fixer un rendez-vous gratuit à domicile."
+          "Je transmets tout cela à ma coordinatrice. Elle vous rappelle sous 2 heures. Elle fixera avec vous une visite gratuite à domicile pour affiner ce projet."
         </div>
-        <div class="card-h3">Documents à préparer pour la visite :</div>
-        <ul class="diag-list" style="margin-left: 20px;">
-          <li>Numéro de Sécurité Sociale du bénéficiaire</li>
-          <li>Dernier avis d'imposition (pour les aides)</li>
-          <li>Notification de caisse de retraite ou d'APA (si déjà obtenue)</li>
-          <li>Ordonnance (si demande de soins infirmiers)</li>
-        </ul>
+        <p style="font-size:13px; color:var(--amicial-blue); font-weight:700; margin-bottom:15px;">📋 Pièces à préparer pour le rappel :</p>
+        
+        <div class="pieces-container">
+          <div class="piece-cat">
+            <span class="piece-cat-title">Administratif — Tous dossiers</span>
+            <ul class="piece-list">
+              <li>CNI, passeport ou titre de séjour du bénéficiaire</li>
+              <li>Attestation de sécurité sociale</li>
+              <li>Notification de protection juridique (Tutelle, curatelle...)</li>
+            </ul>
+          </div>
+          <div class="piece-cat">
+            <span class="piece-cat-title">Prise en charge — Aide</span>
+            <ul class="piece-list">
+              <li>Notification APA, PCH, Caisse de Retraite ou Mutuelle</li>
+              <li>Plan d'aide validé par le financeur</li>
+            </ul>
+          </div>
+          <div class="piece-cat">
+            <span class="piece-cat-title">Prise en charge — Soins</span>
+            <ul class="piece-list">
+              <li>Protocole d'admission rempli par le médecin traitant</li>
+              <li>Photocopie de l'ordonnance du traitement médicamenteux</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tip" style="border-style: dashed; background: #fff;">
+          ❤️ <b>Message de rassurance :</b> "Si vous n'avez pas tout sous la main lors du rappel, ne vous inquiétez pas. Nous ferons le point complet lors de la visite à domicile."
+        </div>
       </div>
     </div>
 
     <div id="panel-secteurs" class="panel">
-      <div class="panel-title">Recherche d'Agence</div>
-      <div class="panel-sub">Basé sur les données en temps réel de votre base SharePoint.</div>
+      <div class="panel-title">Outil Secteur Amicial</div>
       <div class="card">
-        <input type="text" id="cpSearch" class="cp-input" placeholder="Saisissez le Code Postal (ex: 13001)" maxlength="5" oninput="onCPInput()">
-        <div id="cpResult" style="margin-top:15px; font-size:13px; color:var(--amicial-blue);">En attente de saisie...</div>
+        <input type="text" id="cpSearch" class="ui-input" placeholder="Saisissez le CP (5 chiffres)" maxlength="5" oninput="onCPInput()">
+        <div id="cpResult" style="margin-top:10px; font-size:13px;"></div>
         <div id="sectorResult"></div>
-      </div>
-    </div>
-
-    <div id="panel-objections" class="panel">
-      <div class="panel-title">Traitement des Objections</div>
-      <div class="card">
-        <button class="objection-btn" onclick="toggleObj(this)">"Je vais réfléchir" <span>+</span></button>
-        <div class="objection-content">"C'est une décision importante. Sachez que la visite de la coordinatrice est totalement gratuite et ne vous engage à rien. Elle permet simplement d'avoir un devis précis et de rencontrer l'équipe."</div>
-
-        <button class="objection-btn" onclick="toggleObj(this)">"C'est trop cher" <span>+</span></button>
-        <div class="objection-content">"Le tarif affiché est avant aides. Entre le crédit d'impôt de 50% et les aides du département (APA), le reste à charge est souvent minime. Nous vous aidons à monter les dossiers."</div>
       </div>
     </div>
 
@@ -244,74 +233,53 @@ function show(id) {
   event.currentTarget.classList.add('active');
 }
 
-function toggleObj(btn) {
-  const content = btn.nextElementSibling;
-  const isVisible = content.style.display === 'block';
-  content.style.display = isVisible ? 'none' : 'block';
-  btn.querySelector('span').innerText = isVisible ? '+' : '-';
-}
-
-// CONFIGURATION POWER AUTOMATE (ALIGNÉE SUR VOTRE JSON)
 const PA_URL = 'https://defaultbf0e3444b0694eb7b7039407116bf7.0c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ffb831cb2e9c4ae0bafd0cb30f5eabb7/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w_bm7kX76nxct5XxkmZzX4aahdbD-dv_JJ908hNfa_o';
 
 let debounce = null;
 function onCPInput() {
   const cp = document.getElementById('cpSearch').value.trim();
   clearTimeout(debounce);
-  if(cp.length === 5) {
-    debounce = setTimeout(() => searchCP(cp), 400);
-  }
+  if(cp.length === 5) debounce = setTimeout(() => searchCP(cp), 400);
 }
 
 async function searchCP(cp) {
   const resEl = document.getElementById('cpResult');
   const sectEl = document.getElementById('sectorResult');
-  resEl.innerText = "Recherche en cours...";
+  resEl.innerHTML = "<i>Recherche...</i>";
   
   try {
     const response = await fetch(`${PA_URL}&code=${cp}`);
     const data = await response.json();
-    // Le flux renvoie un tableau avec un objet contenant les champs mappés
     const item = Array.isArray(data) ? data[0] : data;
 
-    if (!item || !item.CodePostal || item.CodePostal === "") {
-      resEl.innerHTML = "<b style='color:#e74c3c'>Ce code postal n'est pas répertorié.</b>";
+    if (!item || !item.CodePostal) {
+      resEl.innerHTML = "<b style='color:var(--red-alert)'>Code postal inconnu.</b>";
       sectEl.innerHTML = "";
       return;
     }
 
-    resEl.innerHTML = "<b style='color:#27ae60'>Secteur identifié avec succès.</b>";
+    const isInactive = item.Actif === "Non";
+    resEl.innerHTML = isInactive ? "" : "<b style='color:#27ae60'>Secteur desservi par Amicial.</b>";
     
-    // Rendu basé exactement sur vos noms de champs JSON Power Automate
     sectEl.innerHTML = `
-      <div class="sector-card">
-        <div class="sector-header">
-          <div class="sector-title">Agence : ${item.Agence || 'Non renseignée'}</div>
-          <span class="badge" style="background:${item.Actif === 'Oui' ? '#27ae60' : '#95a5a6'}; color:#fff; margin:0;">
-            ${item.Actif === 'Oui' ? 'OUI (ACTIF)' : 'INACTIF'}
+      <div class="sector-card ${isInactive ? 'inactive' : ''}">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <span style="font-weight:800; font-size:16px; color:var(--amicial-blue)">Agence ${item.Agence || 'Amicial'}</span>
+          <span class="status-tag" style="background:${isInactive ? 'var(--red-alert)' : '#27ae60'}">
+            ${isInactive ? 'NON DESSERVI' : 'SECTEUR ACTIF'}
           </span>
         </div>
-        <div class="sector-detail">
-          <div>
-            <span class="detail-label">Ville référente</span>
-            <span class="detail-val">${item.Ville || '-'}</span>
-          </div>
-          <div>
-            <span class="detail-label">Département</span>
-            <span class="detail-val">${item.Departement || '-'}</span>
-          </div>
-          <div style="grid-column: span 2;">
-            <span class="detail-label">Responsable de secteur</span>
-            <span class="detail-val" style="color:var(--amicial-orange); font-weight:700;">
-               👤 ${item.ReferenteSecteur || 'Non assignée'}
-            </span>
+        ${isInactive ? '<p style="color:var(--red-alert); font-size:13px; font-weight:700; margin-bottom:10px;">⚠️ Amicial n\'intervient pas sur ce secteur actuellement.</p>' : ''}
+        <div style="font-size:13px; display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+          <div><small>VILLE</small><br><b>${item.Ville || '-'}</b></div>
+          <div><small>DEPARTEMENT</small><br><b>${item.Departement || '-'}</b></div>
+          <div style="grid-column:span 2; border-top:1px solid #eee; padding-top:8px;">
+            <small>REFERENTE DE SECTEUR</small><br><b style="color:var(--amicial-orange)">${item.ReferenteSecteur || 'Non assignée'}</b>
           </div>
         </div>
       </div>
     `;
-  } catch (e) {
-    resEl.innerText = "Erreur de communication avec la base de données.";
-  }
+  } catch (e) { resEl.innerText = "Erreur base de données."; }
 }
 </script>
 </body>
