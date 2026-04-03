@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit Prospection Téléphonique — Amicial</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-50:#E6F1FB;--blue-100:#B5D4F4;--blue-600:#185FA5;--blue-800:#0C447C;--blue-900:#042C53;
+    --teal-50:#E1F5EE;--teal-600:#0F6E56;--teal-800:#085041;
+    --amber-50:#FAEEDA;--amber-600:#BA7517;--amber-800:#633806;
+    --purple-50:#EEEDFE;--purple-600:#534AB7;--purple-800:#3C3489;
+    --red-50:#FCEBEB;--red-600:#A32D2D;--red-800:#791F1F;
+    --green-50:#EAF3DE;--green-600:#3B6D11;--green-800:#27500A;
+    --gray-50:#F1EFE8;--gray-100:#D3D1C7;--gray-400:#888780;--gray-600:#5F5E5A;--gray-900:#2C2C2A;
+    --bg:#FAFAF8;--bg2:#F1EFE8;--surface:#FFFFFF;
+    --border:rgba(44,44,42,0.12);--border-med:rgba(44,44,42,0.22);
+    --text:#1a1a18;--text-sec:#5F5E5A;--text-ter:#888780;
+    --radius:10px;--radius-lg:14px;
+    --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;}
+
+  /* HEADER */
+  .header{background:var(--gray-900);color:#fff;padding:2.5rem 2rem 2rem;position:relative;overflow:hidden;}
+  .header::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(24,95,165,0.18);}
+  .header::after{content:'';position:absolute;bottom:-40px;left:30%;width:180px;height:180px;border-radius:50%;background:rgba(15,110,86,0.12);}
+  .header-inner{position:relative;z-index:1;max-width:980px;margin:0 auto;}
+  .header-eyebrow{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
+  .header h1{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;line-height:1.2;margin-bottom:10px;}
+  .header h1 span{color:#64a8e8;}
+  .header-sub{font-size:13px;color:var(--gray-400);}
+  .header-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.2rem;}
+  .header-pill{font-size:11px;padding:4px 10px;border-radius:100px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);}
+
+  /* LAYOUT */
+  .layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 140px);max-width:980px;margin:0 auto;}
+
+  /* NAV */
+  nav{padding:1.5rem 0 1.5rem 1.5rem;border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;}
+  .nav-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-ter);padding:0 12px;margin-bottom:6px;margin-top:1rem;}
+  .nav-label:first-child{margin-top:0;}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:var(--radius);font-size:13px;cursor:pointer;color:var(--text-sec);transition:all .15s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left;}
+  .nav-item:hover{background:var(--bg2);color:var(--text);}
+  .nav-item.active{background:var(--blue-50);color:var(--blue-800);font-weight:500;}
+  .nav-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+  /* CONTENT */
+  .content{padding:2rem 2rem 4rem;}
+  .panel{display:none;animation:fadeIn .2s ease;}
+  .panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+  .panel-title{font-family:'DM Serif Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:4px;}
+  .panel-sub{font-size:13px;color:var(--text-sec);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+
+  /* CARDS */
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1rem;box-shadow:var(--shadow);}
+  .card-title{font-size:13px;font-weight:500;margin-bottom:12px;}
+
+  /* BADGES */
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:100px;margin-bottom:10px;}
+  .badge-blue{background:var(--blue-50);color:var(--blue-800);}
+  .badge-teal{background:var(--teal-50);color:var(--teal-800);}
+  .badge-amber{background:var(--amber-50);color:var(--amber-800);}
+  .badge-purple{background:var(--purple-50);color:var(--purple-800);}
+  .badge-red{background:var(--red-50);color:var(--red-800);}
+  .badge-green{background:var(--green-50);color:var(--green-800);}
+
+  /* SCRIPT BLOCKS */
+  .script-block{background:var(--bg);border-left:2.5px solid var(--blue-600);border-radius:0 var(--radius) var(--radius) 0;padding:10px 14px;margin-bottom:8px;font-size:13px;line-height:1.65;}
+  .script-block.teal{border-left-color:var(--teal-600);}
+  .script-block.amber{border-left-color:var(--amber-600);}
+  .script-block.purple{border-left-color:var(--purple-600);}
+  .script-block.green{border-left-color:var(--green-600);}
+  .script-block.red{border-left-color:var(--red-600);}
+  .script-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-600);margin-bottom:5px;}
+  .script-block.teal .script-label{color:var(--teal-600);}
+  .script-block.amber .script-label{color:var(--amber-600);}
+  .script-block.purple .script-label{color:var(--purple-600);}
+  .script-block.green .script-label{color:var(--green-600);}
+  .script-block.red .script-label{color:var(--red-600);}
+  .script-note{font-size:11px;color:var(--text-ter);margin-top:8px;}
+  .script-note strong{color:var(--text-sec);}
+
+  /* PROFIL TAGS */
+  .profil-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0;}
+  .profil-card{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;}
+  .profil-card.blue{border-color:var(--blue-100);background:var(--blue-50);}
+  .profil-card.teal{border-color:#9FE1CB;background:var(--teal-50);}
+  .profil-card.purple{border-color:#CEC8F6;background:var(--purple-50);}
+  .profil-title{font-size:12px;font-weight:600;margin-bottom:6px;}
+  .profil-card.blue .profil-title{color:var(--blue-800);}
+  .profil-card.teal .profil-title{color:var(--teal-800);}
+  .profil-card.purple .profil-title{color:var(--purple-800);}
+  .profil-card ul{font-size:11px;color:var(--text-sec);padding-left:14px;line-height:1.8;}
+
+  /* SANTE GRID */
+  .sante-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+  .sante-item{background:var(--bg2);border-radius:var(--radius);padding:10px 12px;}
+  .sante-q{font-size:12px;font-weight:500;color:var(--text);margin-bottom:3px;}
+  .sante-opts{font-size:11px;color:var(--text-sec);}
+
+  /* PIECES DOCS */
+  .docs-section{margin-bottom:12px;}
+  .docs-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+  .docs-tag{font-size:10px;padding:2px 7px;border-radius:100px;font-weight:500;}
+  .docs-tag.aide{background:var(--blue-50);color:var(--blue-800);}
+  .docs-tag.soin{background:var(--teal-50);color:var(--teal-800);}
+  .docs-tag.both{background:var(--gray-50);color:var(--gray-600);}
+  .docs-list{list-style:none;padding:0;}
+  .docs-list li{font-size:12px;color:var(--text-sec);padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:6px;line-height:1.5;}
+  .docs-list li:last-child{border-bottom:none;}
+  .docs-list li::before{content:'›';color:var(--text-ter);flex-shrink:0;margin-top:1px;}
+
+  /* OBJECTIONS */
+  .objection{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;overflow:hidden;background:var(--surface);}
+  .objection-q{padding:12px 14px;font-size:13px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .12s;}
+  .objection-q:hover{background:var(--bg);}
+  .objection-q .arrow{font-size:10px;color:var(--text-ter);transition:transform .2s;}
+  .objection.open .objection-q .arrow{transform:rotate(90deg);}
+  .objection-a{display:none;padding:12px 14px;font-size:13px;line-height:1.65;color:var(--text-sec);border-top:1px solid var(--border);background:var(--bg);}
+  .objection.open .objection-a{display:block;}
+
+  /* CODES POSTAUX */
+  .cp-search-wrap{display:flex;gap:8px;margin-bottom:12px;}
+  .cp-input{flex:1;padding:9px 12px;border:1px solid var(--border-med);border-radius:var(--radius);font-size:13px;font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);}
+  .cp-input:focus{outline:none;border-color:var(--blue-600);box-shadow:0 0 0 3px rgba(24,95,165,0.1);}
+  .cp-clear{padding:9px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:12px;background:none;cursor:pointer;color:var(--text-sec);}
+  .cp-result{font-size:13px;margin-bottom:10px;min-height:20px;}
+  .cp-result.ok{color:var(--teal-600);font-weight:500;}
+  .cp-result.ko{color:var(--red-600);font-weight:500;}
+  .cp-result.neutral{color:var(--text-sec);}
+  .cp-result.loading{color:var(--blue-600);font-style:italic;}
+  .cp-result.error{color:var(--amber-600);font-weight:500;}
+  .sector-list{display:flex;flex-direction:column;gap:4px;max-height:420px;overflow-y:auto;}
+  .sector-item{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);transition:border-color .12s;}
+  .sector-item:hover{border-color:var(--border-med);}
+  .sector-item.highlight{border-color:var(--teal-600);background:var(--teal-50);}
+  .sector-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+  .sector-name{font-size:13px;font-weight:500;color:var(--text);}
+  .sector-cp{font-size:11px;color:var(--text-sec);margin-top:1px;line-height:1.5;}
+
+  /* MOBILE */
+  @media(max-width:640px){
+    .layout{grid-template-columns:1fr;}
+    nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:1rem;display:flex;gap:6px;flex-wrap:wrap;overflow:visible;}
+    .nav-label{display:none;}
+    .nav-item{width:auto;padding:6px 10px;}
+    .content{padding:1.5rem 1rem 3rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">Amicial · Service d'aide et de soins à domicile</div>
+    <h1>Kit prospection <span>téléphonique</span></h1>
+    <div class="header-sub">Parcours Prospect Haute Conversion · Mis à jour 2026</div>
+    <div class="header-pills">
+      <span class="header-pill">Rappel sous 2h</span>
+      <span class="header-pill">Visite sous 48h</span>
+      <span class="header-pill">50% Crédit d'impôt immédiat</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav>
+    <div class="nav-label">Parcours Client</div>
+    <button class="nav-item active" onclick="show('accueil')">
+      <span class="nav-dot" style="background:#185FA5"></span> 1. Accueil & Posture
+    </button>
+    <button class="nav-item" onclick="show('diagnostic')">
+      <span class="nav-dot" style="background:#534AB7"></span> 2. Diagnostic Expert
+    </button>
+    <button class="nav-item" onclick="show('solution')">
+      <span class="nav-dot" style="background:#0F6E56"></span> 3. Valeur Amicial
+    </button>
+    <button class="nav-item" onclick="show('financement')">
+      <span class="nav-dot" style="background:#3B6D11"></span> 4. Aide & Dossier
+    </button>
+    <div class="nav-label">Outils Rapides</div>
+    <button class="nav-item" onclick="show('objections')">
+      <span class="nav-dot" style="background:#BA7517"></span> Objections
+    </button>
+    <button class="nav-item" onclick="show('secteurs')">
+      <span class="nav-dot" style="background:#0F6E56"></span> Secteurs / CP
+    </button>
+  </nav>
+
+  <div class="content">
+
+    <div id="panel-accueil" class="panel active">
+      <div class="panel-title">Accueil & Posture</div>
+      <div class="panel-sub">L'objectif est d'instaurer une sécurité immédiate.</div>
+      <div class="card">
+        <span class="badge badge-blue">Posture de l'expert</span>
+        <div class="script-block">
+          <div class="script-label">Accroche Standard</div>
+          "Bonjour, vous êtes bien chez Amicial, je suis [Prénom]. Je vous écoute, comment puis-je vous accompagner aujourd'hui ?"
+        </div>
+        <div class="script-block blue" style="border-left-color: var(--blue-800);">
+          <div class="script-label">Si l'interlocuteur est stressé (urgence)</div>
+          "Je sens que la situation est complexe. Ne vous inquiétez pas, nous avons l'habitude de gérer ces situations délicates. On va regarder ensemble comment vous soulager."
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-diagnostic" class="panel">
+      <div class="panel-title">Diagnostic & Qualification</div>
+      <div class="panel-sub">Comprendre le besoin réel avant de proposer une solution.</div>
+      
+      <div class="card">
+        <span class="badge badge-purple">Le Profilage</span>
+        <div class="script-block purple">
+          "Pour vous orienter au mieux, pouvez-vous me dire pour qui vous appelez ? C'est pour vous-même, pour un proche ?"
+        </div>
+        <div class="profil-grid">
+            <div class="profil-card blue"><div class="profil-title">Bénéficiaire</div><ul><li>Ton rassurant</li><li>Pas de jargon</li></ul></div>
+            <div class="profil-card teal"><div class="profil-title">Famille</div><ul><li>Empathie (fatigue)</li><li>Focus pratique</li></ul></div>
+            <div class="profil-card purple"><div class="profil-title">Pro</div><ul><li>Efficacité</li><li>Urgence / 48h</li></ul></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-purple">État de Santé & Urgence</span>
+        <div class="sante-grid">
+          <div class="sante-item"><div class="sante-q">Mobilité</div><div class="sante-opts">Autonome / Aide marche / Alitement</div></div>
+          <div class="sante-item"><div class="sante-q">Urgence</div><div class="sante-opts">Sortie d'hôpital ? Chute ?</div></div>
+        </div>
+        <div class="script-block purple">
+            "S'agit-il plutôt d'une aide au quotidien (ménage, repas, toilette) ou de soins infirmiers à domicile ? Ou peut-être les deux ?"
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-solution" class="panel">
+        <div class="panel-title">La Valeur Amicial</div>
+        <div class="panel-sub">Vendre de la tranquillité d'esprit, pas des heures.</div>
+        <div class="card">
+            <span class="badge badge-teal">Le Pitch Associatif</span>
+            <div class="script-block teal">
+                "Amicial est une association de proximité. Notre priorité est la qualité du lien social et la stabilité de votre intervenant. Nous ne cherchons pas la rentabilité, mais votre confort."
+            </div>
+            <div class="script-block teal">
+                <div class="script-label">L'Engagement</div>
+                "Voici la suite : je transmets vos notes à notre coordinatrice. Elle vous rappelle sous 2h pour organiser une visite gratuite à domicile. C'est sans engagement."
+            </div>
+        </div>
+    </div>
+
+    <div id="panel-financement" class="panel">
+        <div class="panel-title">Aides & Financement</div>
+        <div class="panel-sub">Lever les freins financiers immédiatement.</div>
+        <div class="card">
+            <span class="badge badge-green">Le Reste à Charge</span>
+            <div class="script-block green">
+                "Concernant le tarif, sachez que vous bénéficiez du **crédit d'impôt immédiat de 50%**. Pour une heure, il ne reste réellement que la moitié à votre charge."
+            </div>
+            <div class="script-block green">
+                "Avez-vous déjà un dossier APA ou mutuelle ? Notre coordinatrice fera le point précis avec vous lors de la visite pour optimiser vos aides."
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Pièces à préparer pour le rappel</div>
+            <ul class="docs-list">
+                <li>Carte d'identité du bénéficiaire</li>
+                <li>Attestation de Sécurité Sociale</li>
+                <li>Ordonnance médicale (si soins infirmiers)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="panel-objections" class="panel">
+      <div class="panel-title">Traitement des objections</div>
+      <div class="panel-sub">Cliquez sur une objection pour afficher la réponse.</div>
+      <div class="card">
+        <div class="objection" onclick="toggleObj(this)">
+          <div class="objection-q">"C'est trop cher." <span class="arrow">▶</span></div>
+          <div class="objection-a">"Je comprends. Mais avant de comparer, regardons le reste à charge réel. Avec les aides (APA/Mutuelle) et le crédit d'impôt de 50%, le coût est souvent divisé par trois."</div>
+        </div>
+        <div class="objection" onclick="toggleObj(this)">
+            <div class="objection-q">"Mon proche refuse." <span class="arrow">▶</span></div>
+            <div class="objection-a">"C'est fréquent. Commençons par une heure de ménage pour apprivoiser l'aide. Le lien se créera naturellement avec l'intervenant."</div>
+        </div>
+        <div class="objection" onclick="toggleObj(this)">
+            <div class="objection-q">"Je dois réfléchir." <span class="arrow">▶</span></div>
+            <div class="objection-a">"C'est normal. Mais les plannings se remplissent vite. Bloquons la visite gratuite d'évaluation : ça n'engage à rien et vous aurez tous les chiffres en main."</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-secteurs" class="panel">
+      <div class="panel-title">Vérification des secteurs</div>
+      <div class="panel-sub">Saisissez un code postal pour vérifier la couverture Amicial.</div>
+      <div class="card">
+        <div class="cp-search-wrap">
+          <input class="cp-input" type="text" id="cpSearch" placeholder="Ex : 75012" maxlength="5" oninput="onCPInput()" autocomplete="off">
+          <button class="cp-clear" onclick="clearCP()">Effacer</button>
+        </div>
+        <div class="cp-result neutral" id="cpResult">Saisissez 5 chiffres.</div>
+        <div id="sectorResult"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// NAVIGATION
+function show(panelId) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + panelId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// OBJECTIONS
+function toggleObj(el) {
+  el.classList.toggle('open');
+}
+
+// =====================================================================
+// SCRIPT SECTEUR (NON MODIFIÉ)
+// =====================================================================
+const PA_URL = 'https://defaultbf0e3444b0694eb7b7039407116bf7.0c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ffb831cb2e9c4ae0bafd0cb30f5eabb7/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w_bm7kX76nxct5XxkmZzX4aahdbD-dv_JJ908hNfa_o';
+
+let cpDebounce = null;
+
+function onCPInput() {
+  const val = document.getElementById('cpSearch').value.trim();
+  clearTimeout(cpDebounce);
+  if (val.length < 5 || !/^\d{5}$/.test(val)) {
+    setResult('neutral', val.length > 0 ? `Saisissez les ${5 - val.length} chiffre(s) manquant(s)…` : 'Saisissez un code postal à 5 chiffres.');
+    document.getElementById('sectorResult').innerHTML = '';
+    return;
+  }
+  cpDebounce = setTimeout(() => searchCP(val), 300);
+}
+
+async function searchCP(cp) {
+  setResult('loading', 'Vérification base Amicial…');
+  try {
+    const res = await fetch(PA_URL + '&code=' + encodeURIComponent(cp), { method: 'GET' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const item = Array.isArray(data) ? data[0] : data;
+    if (!item || !item.CodePostal) {
+      setResult('ko', `Code postal ${cp} non trouvé.`);
+      return;
+    }
+    setResult('ok', `Zone couverte et active.`);
+    renderSectorCard(item);
+  } catch (e) {
+    setResult('error', 'Erreur lors de la recherche.');
+  }
+}
+
+function setResult(cls, text) {
+  const r = document.getElementById('cpResult');
+  r.className = 'cp-result ' + cls;
+  r.innerText = text;
+}
+
+function renderSectorCard(item) {
+  const html = `
+    <div class="sector-item highlight" style="margin-top:10px">
+      <div class="sector-name">${item.Agence || 'Agence Inconnue'}</div>
+      <div class="sector-cp">Référente : ${item.Referent || 'Non renseignée'}</div>
+    </div>`;
+  document.getElementById('sectorResult').innerHTML = html;
+}
+
+function clearCP() {
+  document.getElementById('cpSearch').value = '';
+  onCPInput();
+}
+</script>
+</body>
+</html>
