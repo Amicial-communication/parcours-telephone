@@ -66,7 +66,6 @@
   .badge-teal{background:var(--teal-50);color:var(--teal-800);}
   .badge-amber{background:var(--amber-50);color:var(--amber-800);}
   .badge-purple{background:var(--purple-50);color:var(--purple-800);}
-  .badge-red{background:var(--red-50);color:var(--red-800);}
   .badge-green{background:var(--green-50);color:var(--green-800);}
 
   /* SCRIPT BLOCKS */
@@ -75,13 +74,11 @@
   .script-block.amber{border-left-color:var(--amber-600);}
   .script-block.purple{border-left-color:var(--purple-600);}
   .script-block.green{border-left-color:var(--green-600);}
-  .script-block.red{border-left-color:var(--red-600);}
   .script-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-600);margin-bottom:5px;}
   .script-block.teal .script-label{color:var(--teal-600);}
   .script-block.amber .script-label{color:var(--amber-600);}
   .script-block.purple .script-label{color:var(--purple-600);}
   .script-block.green .script-label{color:var(--green-600);}
-  .script-block.red .script-label{color:var(--red-600);}
   .script-note{font-size:11px;color:var(--text-ter);margin-top:8px;}
   .script-note strong{color:var(--text-sec);}
 
@@ -143,7 +140,10 @@
   .sector-name{font-size:13px;font-weight:500;color:var(--text);}
   .sector-cp{font-size:11px;color:var(--text-sec);margin-top:1px;line-height:1.5;}
 
-  /* MOBILE */
+  /* TIPS */
+  .tip-box{background:var(--amber-50);border:1px dashed var(--amber-600);border-radius:var(--radius);padding:10px;margin:10px 0;font-size:12px;color:var(--amber-800);}
+  .tip-box strong{display:block;margin-bottom:3px;}
+
   @media(max-width:640px){
     .layout{grid-template-columns:1fr;}
     nav{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:1rem;display:flex;gap:6px;flex-wrap:wrap;overflow:visible;}
@@ -157,33 +157,35 @@
 
 <div class="header">
   <div class="header-inner">
-    <div class="header-eyebrow">Amicial · Service d'aide et de soins à domicile</div>
-    <h1>Kit prospection <span>téléphonique</span></h1>
-    <div class="header-sub">Parcours Prospect Haute Conversion · Mis à jour 2026</div>
+    <div class="header-eyebrow">Amicial · Expertise Aide & Soins</div>
+    <h1>Parcours Prospect <span>Haut-Engagement</span></h1>
+    <div class="header-sub">Kit complet de conversion · Accueil · Diagnostic · Rassurance</div>
     <div class="header-pills">
-      <span class="header-pill">Rappel sous 2h</span>
-      <span class="header-pill">Visite sous 48h</span>
-      <span class="header-pill">50% Crédit d'impôt immédiat</span>
+      <span class="header-pill">Rappel < 2h</span>
+      <span class="header-pill">Visite < 48h</span>
+      <span class="header-pill">Crédit impôt immédiat</span>
     </div>
   </div>
 </div>
 
 <div class="layout">
   <nav>
-    <div class="nav-label">Parcours Client</div>
+    <div class="nav-label">Phase 1 : Écoute</div>
     <button class="nav-item active" onclick="show('accueil')">
-      <span class="nav-dot" style="background:#185FA5"></span> 1. Accueil & Posture
+      <span class="nav-dot" style="background:#185FA5"></span> Posture & Accueil
     </button>
+    <div class="nav-label">Phase 2 : Expertise</div>
     <button class="nav-item" onclick="show('diagnostic')">
-      <span class="nav-dot" style="background:#534AB7"></span> 2. Diagnostic Expert
+      <span class="nav-dot" style="background:#534AB7"></span> Diagnostic Expert
     </button>
     <button class="nav-item" onclick="show('solution')">
-      <span class="nav-dot" style="background:#0F6E56"></span> 3. Valeur Amicial
+      <span class="nav-dot" style="background:#0F6E56"></span> La Solution Amicial
     </button>
-    <button class="nav-item" onclick="show('financement')">
-      <span class="nav-dot" style="background:#3B6D11"></span> 4. Aide & Dossier
+    <div class="nav-label">Phase 3 : Conclusion</div>
+    <button class="nav-item" onclick="show('cloture')">
+      <span class="nav-dot" style="background:#3B6D11"></span> Clôture & Pièces
     </button>
-    <div class="nav-label">Outils Rapides</div>
+    <div class="nav-label">Ressources</div>
     <button class="nav-item" onclick="show('objections')">
       <span class="nav-dot" style="background:#BA7517"></span> Objections
     </button>
@@ -195,114 +197,155 @@
   <div class="content">
 
     <div id="panel-accueil" class="panel active">
-      <div class="panel-title">Accueil & Posture</div>
-      <div class="panel-sub">L'objectif est d'instaurer une sécurité immédiate.</div>
+      <div class="panel-title">Posture & Décroché</div>
+      <div class="panel-sub">L'objectif est d'instaurer une relation d'aide dès la 1ère seconde.</div>
+      
       <div class="card">
-        <span class="badge badge-blue">Posture de l'expert</span>
+        <span class="badge badge-blue">Le Décroché Amicial</span>
         <div class="script-block">
-          <div class="script-label">Accroche Standard</div>
-          "Bonjour, vous êtes bien chez Amicial, je suis [Prénom]. Je vous écoute, comment puis-je vous accompagner aujourd'hui ?"
+          <div class="script-label">À dire mot pour mot</div>
+          "Bonjour, vous êtes bien chez Amicial [Nom de l'agence], [Votre Prénom] à votre écoute, comment puis-je vous aider ?"
         </div>
-        <div class="script-block blue" style="border-left-color: var(--blue-800);">
-          <div class="script-label">Si l'interlocuteur est stressé (urgence)</div>
-          "Je sens que la situation est complexe. Ne vous inquiétez pas, nous avons l'habitude de gérer ces situations délicates. On va regarder ensemble comment vous soulager."
+        <div class="tip-box">
+          <strong>💡 Tip d'expert : Le sourire s'entend</strong>
+          Si l'appelant semble essoufflé ou en pleurs, faites une pause de 2 secondes avant de parler. Utilisez un ton bas et calme pour "redescendre" sa tension.
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-blue">Identifier l'appelant</span>
+        <div class="script-block">
+          "Pour vous orienter au mieux, pouvez-vous me dire pour qui vous appelez ? C'est pour vous-même, pour un proche, ou êtes-vous un professionnel de santé ?"
+        </div>
+        <div class="profil-grid">
+          <div class="profil-card blue"><div class="profil-title">Bénéficiaire</div><ul><li>Chaleureux, rassurant</li><li>Vocabulaire simple</li></ul></div>
+          <div class="profil-card teal"><div class="profil-title">Famille</div><ul><li>Écoute empathique</li><li>Valoriser leur rôle</li></ul></div>
+          <div class="profil-card purple"><div class="profil-title">Prescripteur</div><ul><li>Ton pro, efficace</li><li>Focus délai 48h</li></ul></div>
         </div>
       </div>
     </div>
 
     <div id="panel-diagnostic" class="panel">
-      <div class="panel-title">Diagnostic & Qualification</div>
-      <div class="panel-sub">Comprendre le besoin réel avant de proposer une solution.</div>
+      <div class="panel-title">Diagnostic Expert (Le Cœur du Métier)</div>
+      <div class="panel-sub">Évaluation des besoins pour une fiche prospect 100% complète.</div>
       
       <div class="card">
-        <span class="badge badge-purple">Le Profilage</span>
+        <span class="badge badge-purple">1. Localisation & Secteur</span>
         <div class="script-block purple">
-          "Pour vous orienter au mieux, pouvez-vous me dire pour qui vous appelez ? C'est pour vous-même, pour un proche ?"
+          "Où réside la personne concernée ? Quel est son code postal ?"
         </div>
-        <div class="profil-grid">
-            <div class="profil-card blue"><div class="profil-title">Bénéficiaire</div><ul><li>Ton rassurant</li><li>Pas de jargon</li></ul></div>
-            <div class="profil-card teal"><div class="profil-title">Famille</div><ul><li>Empathie (fatigue)</li><li>Focus pratique</li></ul></div>
-            <div class="profil-card purple"><div class="profil-title">Pro</div><ul><li>Efficacité</li><li>Urgence / 48h</li></ul></div>
+        <div class="tip-box">
+          <strong>💡 Action Immédiate</strong>
+          Ouvrez l'onglet <strong>"Secteurs / CP"</strong>. Si zone couverte : continuez. Si non : orientez vers l'agence Amicial limitrophe.
         </div>
       </div>
 
       <div class="card">
-        <span class="badge badge-purple">État de Santé & Urgence</span>
+        <span class="badge badge-purple">2. État de Santé (4 Questions Clés)</span>
         <div class="sante-grid">
-          <div class="sante-item"><div class="sante-q">Mobilité</div><div class="sante-opts">Autonome / Aide marche / Alitement</div></div>
-          <div class="sante-item"><div class="sante-q">Urgence</div><div class="sante-opts">Sortie d'hôpital ? Chute ?</div></div>
+          <div class="sante-item"><div class="sante-q">Mobilité</div><div class="sante-opts">Autonome · Fauteuil · Alitement</div></div>
+          <div class="sante-item"><div class="sante-q">Cognitif</div><div class="sante-opts">Lucide · Alzheimer · Troubles légers</div></div>
+          <div class="sante-item"><div class="sante-q">Incontinence</div><div class="sante-opts">Non · Oui (jour/nuit)</div></div>
+          <div class="sante-item"><div class="sante-q">Urgence</div><div class="sante-opts">Sortie d'hôpital ? Chute récente ?</div></div>
         </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-purple">3. Environnement & Autres Services</span>
         <div class="script-block purple">
-            "S'agit-il plutôt d'une aide au quotidien (ménage, repas, toilette) ou de soins infirmiers à domicile ? Ou peut-être les deux ?"
+          <div class="script-label">Question indispensable</div>
+          "Est-ce que d'autres professionnels interviennent déjà ? (Infirmière libérale, kiné, portage de repas, une autre association ?)"
+        </div>
+        <div class="tip-box">
+          <strong>💡 Pourquoi demander ?</strong>
+          Cela permet à la coordinatrice de savoir s'il faut organiser une coordination des soins ou s'il s'agit d'un remplacement de prestataire (insatisfaction).
         </div>
       </div>
     </div>
 
     <div id="panel-solution" class="panel">
-        <div class="panel-title">La Valeur Amicial</div>
-        <div class="panel-sub">Vendre de la tranquillité d'esprit, pas des heures.</div>
-        <div class="card">
-            <span class="badge badge-teal">Le Pitch Associatif</span>
-            <div class="script-block teal">
-                "Amicial est une association de proximité. Notre priorité est la qualité du lien social et la stabilité de votre intervenant. Nous ne cherchons pas la rentabilité, mais votre confort."
-            </div>
-            <div class="script-block teal">
-                <div class="script-label">L'Engagement</div>
-                "Voici la suite : je transmets vos notes à notre coordinatrice. Elle vous rappelle sous 2h pour organiser une visite gratuite à domicile. C'est sans engagement."
-            </div>
+      <div class="panel-title">La Solution Amicial</div>
+      <div class="panel-sub">Comment transformer un "besoin" en "soulagement".</div>
+      
+      <div class="card">
+        <span class="badge badge-teal">Synthèse & Rassurance</span>
+        <div class="script-block teal">
+          "Pour résumer, vous avez besoin d'une aide pour sécuriser [le lever / les repas / la toilette] de [Prénom]. Chez Amicial, nous avons l'habitude de ce type d'accompagnement."
         </div>
+        <div class="script-block teal">
+          <div class="script-label">Le Pitch Associatif</div>
+          "Nous sommes une association : notre priorité n'est pas la rentabilité, mais la **stabilité de votre intervenant** et la qualité de l'encadrement par nos coordinatrices."
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-green">Le Levier du Prix</span>
+        <div class="script-block green">
+          "Il est important de savoir que vous bénéficiez de **50% de crédit d'impôt immédiat**. Pour une heure, il ne reste réellement que la moitié à votre charge."
+        </div>
+        <div class="tip-box">
+          <strong>💡 Tip : Ne parlez jamais de "Coût"</strong>
+          Dites : "Votre reste à charge réel est de environ [X]€".
+        </div>
+      </div>
     </div>
 
-    <div id="panel-financement" class="panel">
-        <div class="panel-title">Aides & Financement</div>
-        <div class="panel-sub">Lever les freins financiers immédiatement.</div>
-        <div class="card">
-            <span class="badge badge-green">Le Reste à Charge</span>
-            <div class="script-block green">
-                "Concernant le tarif, sachez que vous bénéficiez du **crédit d'impôt immédiat de 50%**. Pour une heure, il ne reste réellement que la moitié à votre charge."
-            </div>
-            <div class="script-block green">
-                "Avez-vous déjà un dossier APA ou mutuelle ? Notre coordinatrice fera le point précis avec vous lors de la visite pour optimiser vos aides."
-            </div>
+    <div id="panel-cloture" class="panel">
+      <div class="panel-title">Clôture & Engagement</div>
+      <div class="panel-sub">Terminer l'appel en laissant une impression de prise en charge totale.</div>
+      
+      <div class="card">
+        <span class="badge badge-green">Le Rappel Rapide</span>
+        <div class="script-block green">
+          "Je transmets votre dossier immédiatement à notre coordinatrice. Elle va vous rappeler **dans les 2 heures** pour faire le point et fixer une **visite gratuite d'évaluation** sous 48h."
         </div>
-        <div class="card">
-            <div class="card-title">Pièces à préparer pour le rappel</div>
-            <ul class="docs-list">
-                <li>Carte d'identité du bénéficiaire</li>
-                <li>Attestation de Sécurité Sociale</li>
-                <li>Ordonnance médicale (si soins infirmiers)</li>
-            </ul>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-amber">Pièces à préparer (Bienveillance)</span>
+        <div class="script-block amber">
+          "Pour que tout soit prêt lors de son appel et pour vous faire gagner du temps, pourriez-vous préparer ces quelques éléments ?"
         </div>
+        <div class="docs-section">
+          <ul class="docs-list">
+            <li>Numéro de Sécurité Sociale du bénéficiaire</li>
+            <li>Notification d'aide (APA, PCH, Mutuelle) si vous en avez une</li>
+            <li>Ordonnance du médecin traitant (uniquement si vous demandez du soin)</li>
+          </ul>
+        </div>
+        <div class="script-block amber">
+          "Ne vous inquiétez pas si vous n'avez pas tout, nous ferons le point ensemble lors de la visite."
+        </div>
+      </div>
+
+      <div class="card" style="background:var(--blue-900); color:white;">
+        <div class="card-title" style="color:white">Derniers mots</div>
+        <p style="font-size:13px">"Je reste à votre disposition si vous avez la moindre question d'ici là. Bonne journée et soyez rassuré, nous prenons le relais."</p>
+      </div>
     </div>
 
     <div id="panel-objections" class="panel">
-      <div class="panel-title">Traitement des objections</div>
-      <div class="panel-sub">Cliquez sur une objection pour afficher la réponse.</div>
+      <div class="panel-title">Traitement des Objections</div>
       <div class="card">
         <div class="objection" onclick="toggleObj(this)">
-          <div class="objection-q">"C'est trop cher." <span class="arrow">▶</span></div>
-          <div class="objection-a">"Je comprends. Mais avant de comparer, regardons le reste à charge réel. Avec les aides (APA/Mutuelle) et le crédit d'impôt de 50%, le coût est souvent divisé par trois."</div>
+          <div class="objection-q">"C'est trop cher pour nous" <span class="arrow">▶</span></div>
+          <div class="objection-a">"C'est un investissement pour la sécurité. Avec le crédit d'impôt de 50% et les aides APA, le reste à charge est souvent bien plus bas qu'on ne le pense. La visite gratuite permet de calculer cela précisément."</div>
         </div>
         <div class="objection" onclick="toggleObj(this)">
-            <div class="objection-q">"Mon proche refuse." <span class="arrow">▶</span></div>
-            <div class="objection-a">"C'est fréquent. Commençons par une heure de ménage pour apprivoiser l'aide. Le lien se créera naturellement avec l'intervenant."</div>
-        </div>
-        <div class="objection" onclick="toggleObj(this)">
-            <div class="objection-q">"Je dois réfléchir." <span class="arrow">▶</span></div>
-            <div class="objection-a">"C'est normal. Mais les plannings se remplissent vite. Bloquons la visite gratuite d'évaluation : ça n'engage à rien et vous aurez tous les chiffres en main."</div>
+          <div class="objection-q">"Mon proche refuse l'aide" <span class="arrow">▶</span></div>
+          <div class="objection-a">"C'est très courant. Nous conseillons de commencer par une mission simple (ménage) pour que le lien se crée doucement sans brusquer l'autonomie."</div>
         </div>
       </div>
     </div>
 
     <div id="panel-secteurs" class="panel">
       <div class="panel-title">Vérification des secteurs</div>
-      <div class="panel-sub">Saisissez un code postal pour vérifier la couverture Amicial.</div>
       <div class="card">
         <div class="cp-search-wrap">
-          <input class="cp-input" type="text" id="cpSearch" placeholder="Ex : 75012" maxlength="5" oninput="onCPInput()" autocomplete="off">
+          <input class="cp-input" type="text" id="cpSearch" placeholder="Code postal (ex : 75012)" maxlength="5" oninput="onCPInput()" autocomplete="off">
           <button class="cp-clear" onclick="clearCP()">Effacer</button>
         </div>
-        <div class="cp-result neutral" id="cpResult">Saisissez 5 chiffres.</div>
+        <div class="cp-result neutral" id="cpResult">Saisissez un code postal à 5 chiffres.</div>
         <div id="sectorResult"></div>
       </div>
     </div>
@@ -325,7 +368,7 @@ function toggleObj(el) {
 }
 
 // =====================================================================
-// SCRIPT SECTEUR (NON MODIFIÉ)
+// SCRIPT SECTEUR (PRESERVED)
 // =====================================================================
 const PA_URL = 'https://defaultbf0e3444b0694eb7b7039407116bf7.0c.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ffb831cb2e9c4ae0bafd0cb30f5eabb7/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=w_bm7kX76nxct5XxkmZzX4aahdbD-dv_JJ908hNfa_o';
 
@@ -346,17 +389,16 @@ async function searchCP(cp) {
   setResult('loading', 'Vérification base Amicial…');
   try {
     const res = await fetch(PA_URL + '&code=' + encodeURIComponent(cp), { method: 'GET' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const item = Array.isArray(data) ? data[0] : data;
     if (!item || !item.CodePostal) {
-      setResult('ko', `Code postal ${cp} non trouvé.`);
+      setResult('ko', `Secteur non trouvé.`);
       return;
     }
-    setResult('ok', `Zone couverte et active.`);
+    setResult('ok', `Secteur couvert par Amicial.`);
     renderSectorCard(item);
   } catch (e) {
-    setResult('error', 'Erreur lors de la recherche.');
+    setResult('error', 'Erreur de connexion.');
   }
 }
 
@@ -367,12 +409,11 @@ function setResult(cls, text) {
 }
 
 function renderSectorCard(item) {
-  const html = `
+  document.getElementById('sectorResult').innerHTML = `
     <div class="sector-item highlight" style="margin-top:10px">
-      <div class="sector-name">${item.Agence || 'Agence Inconnue'}</div>
-      <div class="sector-cp">Référente : ${item.Referent || 'Non renseignée'}</div>
+      <div class="sector-name">${item.Agence || 'Agence'}</div>
+      <div class="sector-cp">Référente : ${item.Referent || 'Inconnue'}</div>
     </div>`;
-  document.getElementById('sectorResult').innerHTML = html;
 }
 
 function clearCP() {
